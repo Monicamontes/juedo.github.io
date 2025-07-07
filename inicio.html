@@ -39,7 +39,7 @@
   <p id="historia">Estás en el año 2025. Descubres una misteriosa máquina del tiempo. ¿Qué harás?</p>
 
   <div id="opciones">
-    <button onclick="viajar('2100')">🚀 Viajar al año 2100 (HTML)</button>
+    <button onclick="viajar('2100')">🚀 Viajar a la edad moderna (HTML)</button>
     <button onclick="viajar('3000')">🪐 Viajar al año 3000 (Java)</button>
     <button onclick="viajar('medieval')">⚔️ Viajar al pasado (HTML)</button>
   </div>
@@ -51,14 +51,14 @@
 
       if (destino === "2100") {
         historia.innerText = "Has llegado al año 2100. Los autos vuelan y los robots ayudan en casa. ¡Increíble!";
-        setTimeout(() => window.location.href = "barco.html", 3000); // HTML válido
+        setTimeout(() =>href = "barco.html", 3000); // HTML válido
       } else if (destino === "3000") {
         historia.innerText = "¡Bienvenido al año 3000! La humanidad vive en otros planetas.";
-        setTimeout(() => window.location.href = "index.html", 3000);{
+        setTimeout(() =>href = "index.html", 3000);{
         } ;
       } else if (destino === "medieval") {
         historia.innerText = "Has viajado a la Edad Media. Castillos, dragones y caballeros te rodean.";
-        setTimeout(() => window.location.href = "MainActivity.kt", 3000); // HTML válido
+        setTimeout(() =>href = "MainActivity.kt", 3000); // HTML válido
       }
 
       opciones.innerHTML = '<button onclick="reiniciar()">🔁 Volver al inicio</button>';
