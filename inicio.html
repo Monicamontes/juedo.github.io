@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Viaje en el Tiempo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2.5em;
+    }
+    #historia {
+      font-size: 1.3em;
+      margin: 30px 0;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      background-color: #00bcd4;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0097a7;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌌 Viaje en el Tiempo 🌌</h1>
+  <p id="historia">Estás en el año 2025. Descubres una misteriosa máquina del tiempo. ¿Qué harás?</p>
+
+  <div id="opciones">
+    <button onclick="viajar('2100')">🚀 Viajar al año 2100 (HTML)</button>
+    <button onclick="viajar('3000')">🪐 Viajar al año 3000 (Java)</button>
+    <button onclick="viajar('medieval')">⚔️ Viajar al pasado (HTML)</button>
+  </div>
+
+  <script>
+    function viajar(destino) {
+      const historia = document.getElementById("historia");
+      const opciones = document.getElementById("opciones");
+
+      if (destino === "2100") {
+        historia.innerText = "Has llegado al año 2100. Los autos vuelan y los robots ayudan en casa. ¡Increíble!";
+        setTimeout(() => window.location.href = "barco.html", 3000); // HTML válido
+      } else if (destino === "3000") {
+        historia.innerText = "¡Bienvenido al año 3000! La humanidad vive en otros planetas.";
+        setTimeout(() => window.location.href = "index.html", 3000);{
+        } ;
+      } else if (destino === "medieval") {
+        historia.innerText = "Has viajado a la Edad Media. Castillos, dragones y caballeros te rodean.";
+        setTimeout(() => window.location.href = "MainActivity.kt", 3000); // HTML válido
+      }
+
+      opciones.innerHTML = '<button onclick="reiniciar()">🔁 Volver al inicio</button>';
+    }
+
+    function reiniciar() {
+      document.getElementById("historia").innerText =
+        "Estás en el año 2025. Descubres una misteriosa máquina del tiempo. ¿Qué harás?";
+      document.getElementById("opciones").innerHTML = `
+        <button onclick="viajar('2100')">🚀 Viajar al año 2100 (HTML)</button>
+        <button onclick="viajar('3000')">🪐 Viajar al año 3000 (Java)</button>
+        <button onclick="viajar('medieval')">⚔️ Viajar al pasado (HTML)</button>
+      `;
+    }
+  </script>
+
+</body>
+</html>
+

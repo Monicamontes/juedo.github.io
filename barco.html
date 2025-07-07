@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reconstruye el Barco</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #87ceeb;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+
+    #game-container {
+      width: 45vw;
+      height: 100vh;
+      background-image: url('barco.jpg'); /* fondo de muelle */
+      background-size: cover;
+      position: relative;
+    }
+
+    .part {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      cursor: grab;
+    }
+
+    #message {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: none;
+    }
+
+    #assembled {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: white;
+      background: rgba(0,0,0,0.5);
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <div id="message">¡Barco completado!</div>
+    <div id="assembled">Piezas unidas: <span id="score">0</span>/3</div>
+    <div class="part" id="part1" style="top: 50px; left: 50px; background-image: url('pieza1.jpg');"></div>
+    <div class="part" id="part2" style="top: 200px; left: 150px; background-image: url('pieza2.jpg');"></div>
+    <div class="part" id="part3" style="top: 300px; left: 300px; background-image: url('pieza3.jpg');"></div>
+  </div>
+
+  <script>
+    let score = 0;
+    const totalParts = 3;
+    const assembledArea = { x: 600, y: 400, radius: 100 };
+
+    document.querySelectorAll('.part').forEach(part => {
+      part.addEventListener('mousedown', function (e) {
+        let offsetX = e.offsetX;
+        let offsetY = e.offsetY;
+
+        function move(e) {
+          part.style.left = (e.clientX - offsetX) + 'px';
+          part.style.top = (e.clientY - offsetY) + 'px';
+        }
+
+        function stop(e) {
+          document.removeEventListener('mousemove', move);
+          document.removeEventListener('mouseup', stop);
+
+          const x = parseInt(part.style.left);
+          const y = parseInt(part.style.top);
+
+          const dx = x - assembledArea.x;
+          const dy = y - assembledArea.y;
+
+          if (Math.sqrt(dx*dx + dy*dy) < assembledArea.radius) {
+            part.style.left = assembledArea.x + 'px';
+            part.style.top = assembledArea.y + 'px';
+            part.style.pointerEvents = 'none';
+            score++;
+            document.getElementById('score').textContent = score;
+            if (score === totalParts) {
+              document.getElementById('message').style.display = 'block';
+            }
+          }
+        }
+
+        document.addEventListener('mousemove', move);
+        document.addEventListener('mouseup', stop);
+      });
+    });
+  </script>
+</body>
+</html>

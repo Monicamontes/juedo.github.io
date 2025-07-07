@@ -1,0 +1,43 @@
+body{
+      margin: 0;
+      background-color: #87ceeb;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+
+    #game-container {
+      width: 50vw;
+      height: 100vh;
+      background-image: url('barco.jpg'); /* fondo de muelle */
+      background-size: cover;
+      position: relative;
+    }
+
+    .part {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      cursor: grab;
+    }
+
+    #message {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: none;
+    }
+
+    #assembled {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: white;
+      background: rgba(0,0,0,0.5);
+      padding: 5px 10px;
+    }
